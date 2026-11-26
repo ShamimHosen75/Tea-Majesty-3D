@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { createClayTexture, createGlowTexture, createLeafTexture, createNoiseTexture } from './textures.js';
 
-const DAY_TOP = new THREE.Color('#4f817f');
-const DAY_HORIZON = new THREE.Color('#f0b871');
-const NIGHT_TOP = new THREE.Color('#06140d');
-const NIGHT_HORIZON = new THREE.Color('#123526');
+const DAY_TOP = new THREE.Color('#06190f');
+const DAY_HORIZON = new THREE.Color('#2a5236');
+const NIGHT_TOP = new THREE.Color('#030c07');
+const NIGHT_HORIZON = new THREE.Color('#0b2618');
 
 const GLSL_NOISE = /* glsl */ `
   float hash(float n){ return fract(sin(n) * 43758.5453123); }
@@ -70,7 +70,7 @@ export class World {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.isMobile ? 1.5 : 1.75));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.05;
+    this.renderer.toneMappingExposure = 0.95;
   }
 
   initScene() {
@@ -82,7 +82,7 @@ export class World {
     this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
     this.scene.environmentIntensity = 0.55;
 
-    this.hemi = new THREE.HemisphereLight('#fff1d0', '#1d3b22', 1.2);
+    this.hemi = new THREE.HemisphereLight('#d8ecd0', '#0d2414', 0.9);
     this.sun = new THREE.DirectionalLight('#ffd49a', 3.2);
     this.sun.position.set(-6, 8, 4);
     this.rim = new THREE.DirectionalLight('#9fe0b5', 0);
@@ -119,7 +119,7 @@ export class World {
           vec2 d = vUv - uSun; d.x *= 2.0;
           float sun = exp(-length(d) * 7.0);
           float halo = exp(-length(d) * 2.2);
-          day += vec3(1.0, 0.85, 0.55) * (sun * 1.1 + halo * 0.18);
+          day += vec3(0.95, 0.8, 0.45) * (sun * 0.6 + halo * 0.07);
           vec3 night = mix(uNightHorizon, uNightTop, smoothstep(0.2, 0.9, vUv.y));
           night += vec3(0.85, 0.65, 0.3) * exp(-length(vUv - vec2(0.5, 0.35)) * 4.0) * 0.08;
           gl_FragColor = vec4(mix(day, night, uDark), 1.0);
@@ -134,11 +134,11 @@ export class World {
 
   buildHills() {
     const layers = [
-      { z: -52, y: 5.5, amp: 5.0, freq: 0.06, color: '#8fb3a0', seed: 11, rows: 0 },
-      { z: -40, y: 3.2, amp: 4.5, freq: 0.08, color: '#6b9a74', seed: 23, rows: 0 },
-      { z: -29, y: 1.4, amp: 4.0, freq: 0.1, color: '#4e8a52', seed: 37, rows: 0.5 },
-      { z: -19, y: -0.2, amp: 3.4, freq: 0.13, color: '#3a7a3c', seed: 51, rows: 1 },
-      { z: -11, y: -1.3, amp: 2.4, freq: 0.17, color: '#2d6a2f', seed: 67, rows: 1 },
+      { z: -52, y: 5.5, amp: 5.0, freq: 0.06, color: '#2b5a43', seed: 11, rows: 0 },
+      { z: -40, y: 3.2, amp: 4.5, freq: 0.08, color: '#20503a', seed: 23, rows: 0 },
+      { z: -29, y: 1.4, amp: 4.0, freq: 0.1, color: '#1b4a2c', seed: 37, rows: 0.5 },
+      { z: -19, y: -0.2, amp: 3.4, freq: 0.13, color: '#153f22', seed: 51, rows: 1 },
+      { z: -11, y: -1.3, amp: 2.4, freq: 0.17, color: '#0f331a', seed: 67, rows: 1 },
     ];
     this.hills = layers.map((l, i) => {
       const width = 140;
@@ -149,8 +149,8 @@ export class World {
         uniforms: {
           ...this.uniforms,
           uColor: { value: new THREE.Color(l.color) },
-          uFog: { value: new THREE.Color('#d9c48f') },
-          uNight: { value: new THREE.Color('#0c2419').offsetHSL(0, 0, i * 0.012) },
+          uFog: { value: new THREE.Color('#244c34') },
+          uNight: { value: new THREE.Color('#08190f').offsetHSL(0, 0, i * 0.012) },
           uAmp: { value: l.amp },
           uFreq: { value: l.freq },
           uSeed: { value: l.seed },
@@ -213,7 +213,7 @@ export class World {
             n *= texture2D(uNoise, vec2(vUv.x * 3.0 - uTime * 0.012, vUv.y * 1.2 + uOffset)).r * 1.6;
             float a = smoothstep(0.25, 0.8, n) * smoothstep(0.0, 0.35, vUv.y) * smoothstep(1.0, 0.45, vUv.y);
             a *= smoothstep(0.0, 0.15, vUv.x) * smoothstep(1.0, 0.85, vUv.x);
-            vec3 col = mix(vec3(1.0, 0.96, 0.88), vec3(0.35, 0.55, 0.45), uDark);
+            vec3 col = mix(vec3(0.62, 0.76, 0.62), vec3(0.3, 0.5, 0.4), uDark);
             gl_FragColor = vec4(col, a * uOpacity * (1.0 - uDark * 0.75));
           }
         `,
@@ -263,8 +263,8 @@ export class World {
     const pos = geo.attributes.position;
     const colors = [];
     const v = new THREE.Vector3();
-    const moss = new THREE.Color('#3e6b2c');
-    const stone = new THREE.Color('#5a5144');
+    const moss = new THREE.Color('#244a1c');
+    const stone = new THREE.Color('#38342c');
     const c = new THREE.Color();
     for (let i = 0; i < pos.count; i++) {
       v.fromBufferAttribute(pos, i);
@@ -424,7 +424,7 @@ export class World {
         dummy.scale.setScalar(0.45 + Math.random() * 0.35);
         dummy.updateMatrix();
         mesh.setMatrixAt(k, dummy.matrix);
-        color.setHSL(0.24 + Math.random() * 0.06, 0.55, 0.35 + Math.random() * 0.25);
+        color.setHSL(0.27 + Math.random() * 0.06, 0.55, 0.2 + Math.random() * 0.18);
         mesh.setColorAt(k, color);
         k++;
       }
@@ -575,6 +575,8 @@ export class World {
     const pos = heroPos.lerp(expPos, e);
     const target = heroTarget.lerp(expTarget, e);
     target.y += f * 1.9;
+    // On tall phone screens drop the cup below the experience heading.
+    target.y += e * (1 - f) * (k - 1) * 0.9;
 
     // Cinematic intro: start high above the estate and glide down.
     const i = 1 - s.intro;
@@ -606,7 +608,7 @@ export class World {
 
     // Lighting morphs from golden hour to a warm studio glow.
     this.sun.intensity = lerp(3.2, 1.2, e);
-    this.hemi.intensity = lerp(1.2, 0.35, e);
+    this.hemi.intensity = lerp(0.9, 0.35, e);
     this.rim.intensity = lerp(0, 2.4, e);
     this.warm.intensity = lerp(0, 14, e);
     this.scene.environmentIntensity = lerp(0.55, 0.8, e);

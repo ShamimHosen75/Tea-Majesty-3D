@@ -1,7 +1,7 @@
 :root {
-  --bg: #08170f;
-  --bg-2: #0c2117;
-  --bg-3: #10291d;
+  --bg: #040e08;
+  --bg-2: #061610;
+  --bg-3: #0a1f15;
   --emerald: #1f6b3a;
   --leaf: #7cc26a;
   --gold: #e2bd62;
@@ -1805,7 +1805,7 @@ main {
 .footer {
   position: relative;
   padding: 70px var(--gutter) 28px;
-  background: #06120c;
+  background: #030a06;
   border-top: 1px solid var(--line);
   overflow: hidden;
 }
@@ -2310,6 +2310,50 @@ main {
 }
 
 @media (max-width: 600px) {
+  .hero {
+    padding-top: 104px;
+  }
+  .hero__eyebrow {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+  }
+  .note {
+    background: linear-gradient(160deg, rgba(10, 34, 22, 0.88), rgba(4, 14, 8, 0.82));
+  }
+  .experience__stage {
+    padding-top: 46vh;
+  }
+  .craft__intro .lead::after {
+    content: ' Swipe the cards →';
+    color: var(--gold);
+  }
+  .blends {
+    padding-top: 90px;
+  }
+  .blends__stage {
+    min-height: 380px;
+  }
+  .pouch-wrap {
+    width: min(240px, 62vw);
+  }
+  .finale {
+    min-height: 100svh;
+    padding-top: 110px;
+  }
+  .finale__actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer__giant {
+    margin-top: 36px;
+  }
+  .modal__card {
+    padding-top: 26px;
+    border-radius: 22px;
+  }
+  .modal h2 {
+    font-size: 24px;
+  }
   .hero__meta {
     position: static;
     flex-direction: row;
