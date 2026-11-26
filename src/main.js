@@ -238,7 +238,7 @@ const showSlide = (i) => {
   if (prev) gsap.to(prev, { opacity: 0, y: -30 * dir, duration: 0.45, ease: 'power2.in', onComplete: () => prev.classList.remove('is-active') });
   const next = slides[i];
   next.classList.add('is-active');
-  gsap.fromTo(next.children, { opacity: 0, y: 40 * dir }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, delay: prev ? 0.25 : 0, ease: 'power3.out' });
+  gsap.fromTo(next.children, { opacity: 0, y: 40 * dir }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, delay: prev ? 0.42 : 0, ease: 'power3.out' });
   gsap.set(next, { opacity: 1, y: 0 });
   benefits.forEach((b) => b.classList.toggle('is-on', b.dataset.group.split(' ').includes(String(i))));
   gsap.to('.sprig', { rotation: [-4, 3, -1][i], duration: 1.4, ease: 'power3.out', transformOrigin: '50% 90%' });
