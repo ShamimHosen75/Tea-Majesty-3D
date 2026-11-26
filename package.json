@@ -1,0 +1,28 @@
+{
+  "name": "tea-majesty-3d",
+  "version": "1.0.0",
+  "description": "Tea Majesty — immersive 3D tea brand website",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShamimHosen75/Tea-Majesty-3D.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShamimHosen75/Tea-Majesty-3D/issues"
+  },
+  "homepage": "https://github.com/ShamimHosen75/Tea-Majesty-3D#readme",
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "private": true,
+  "type": "module"
+}

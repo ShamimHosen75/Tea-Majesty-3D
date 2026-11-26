@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tea Majesty — Royal Highland Tea</title>
+    <meta name="description" content="Tea Majesty: hand-plucked highland leaves, slow-brewed into royal chai. An immersive 3D tea experience." />
+    <meta name="theme-color" content="#08170f" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 22h36l-4 30a6 6 0 0 1-6 5H24a6 6 0 0 1-6-5z' fill='%23c0643a'/%3E%3Cpath d='M32 4c10 6 10 14 0 16C22 18 22 10 32 4z' fill='%233f9b5a'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="is-loading">
+    <!-- SVG icon sprite -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 18h18l-1.5-10-5 4L12 5l-2.5 7-5-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="4" r="1.2" fill="currentColor"/></symbol>
+        <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 9h12l-1.4 10a2 2 0 0 1-2 1.7H8.4a2 2 0 0 1-2-1.7zM17 11h1.5a2.5 2.5 0 0 1 0 5H16.4M9 2c1 1.2-1 2.2 0 3.6M13 2c1 1.2-1 2.2 0 3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+        <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c3 4 6 6.5 6 11a6 6 0 0 1-12 0c0-3 2-4.5 2-7 2 1 3 2.5 3 4.5C12 9 12 6 12 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4zM4 7l8 4 8-4M12 11v10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3h1V4zM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3h-1V4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10zM7 12h3l1.5-2 2 4 1.5-2h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6zM9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+        <symbol id="i-gut" viewBox="0 0 24 24"><path d="M8 3v4c0 2 2 2 4 2s4 1 4 3-2 3-4 3-4 1-4 3 1 3 3 3h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14A8 8 0 1 1 10 4a6.5 6.5 0 0 0 10 10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+        <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M9 20v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2" fill="currentColor"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 9h8M8 13h8M8 17h5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></symbol>
+        <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      </defs>
+    </svg>
+
+    <!-- Preloader -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__cup">
+        <svg viewBox="0 0 120 120">
+          <defs>
+            <clipPath id="cupClip"><path d="M28 38h64l-7 58a8 8 0 0 1-8 7H43a8 8 0 0 1-8-7z" /></clipPath>
+          </defs>
+          <path class="loader__outline" d="M28 38h64l-7 58a8 8 0 0 1-8 7H43a8 8 0 0 1-8-7z" />
+          <g clip-path="url(#cupClip)">
+            <rect class="loader__fill" x="20" y="104" width="80" height="80" />
+            <path class="loader__wave" d="M0 104 q15 -6 30 0 t30 0 t30 0 t30 0 t30 0 v40 h-150z" />
+          </g>
+          <path class="loader__steam" d="M52 30c-4-6 4-9 0-16M66 30c-4-6 4-9 0-16" />
+        </svg>
+      </div>
+      <p class="loader__brand">Tea&nbsp;Majesty</p>
+      <p class="loader__count"><span id="loaderCount">0</span>%</p>
+      <p class="loader__hint">Steeping the leaves&hellip;</p>
+    </div>
+
+    <!-- Custom cursor -->
+    <div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+
+    <!-- 3D world -->
+    <canvas class="webgl" id="webgl" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+      <a href="#home" class="nav__brand" data-cursor="Home">
+        <span class="nav__crest"><svg><use href="#i-crown" /></svg></span>
+        <span class="nav__name">Tea Majesty</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <span class="nav__pill" aria-hidden="true"></span>
+        <a href="#home" class="nav__link is-active" data-section="home"><svg><use href="#i-home" /></svg>Home</a>
+        <a href="#experience" class="nav__link" data-section="experience"><svg><use href="#i-cup" /></svg>Experience</a>
+        <a href="#science" class="nav__link" data-section="science"><svg><use href="#i-leaf" /></svg>Botanical Science</a>
+        <a href="#craft" class="nav__link" data-section="craft"><svg><use href="#i-flame" /></svg>Our Craft</a>
+        <a href="#blends" class="nav__link" data-section="blends"><svg><use href="#i-box" /></svg>Blends</a>
+      </nav>
+      <button class="btn btn--gold nav__cta" data-order data-cursor="Order">Royal Reserve <svg><use href="#i-arrow" /></svg></button>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg><use href="#i-menu" /></svg></button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#home" data-section="home"><small>01</small>Home</a>
+      <a href="#experience" data-section="experience"><small>02</small>Experience</a>
+      <a href="#science" data-section="science"><small>03</small>Botanical Science</a>
+      <a href="#craft" data-section="craft"><small>04</small>Our Craft</a>
+      <a href="#blends" data-section="blends"><small>05</small>Blends</a>
+      <button class="btn btn--gold" data-order>Order Royal Reserve <svg><use href="#i-arrow" /></svg></button>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <main id="smooth">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="home" data-nav="home">
+        <div class="hero__inner">
+          <p class="eyebrow hero__eyebrow"><span class="dot"></span> Highland Estate · Hand-plucked since dawn</p>
+          <h1 class="hero__title" aria-label="Tea Majesty">
+            <span class="hero__word" data-split>Tea</span>
+            <span class="hero__word hero__word--italic" data-split>Majesty</span>
+          </h1>
+          <p class="hero__tagline" data-reveal>&ldquo;Where mist kisses the leaf, and every sip is crowned.&rdquo;</p>
+          <div class="hero__actions" data-reveal>
+            <a href="#blends" class="btn btn--gold" data-magnetic data-cursor="Shop">Discover the Blends <svg><use href="#i-arrow" /></svg></a>
+            <a href="#experience" class="btn btn--ghost" data-magnetic>The Ritual</a>
+          </div>
+        </div>
+        <div class="hero__meta">
+          <div class="hero__stat"><strong data-count="1450">0</strong><span>m elevation</span></div>
+          <div class="hero__stat"><strong data-count="2">0</strong><span>leaves &amp; a bud</span></div>
+          <div class="hero__stat"><strong data-count="100">0</strong><span>% hand-picked</span></div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span>Scroll to steep</span><i></i></div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section class="experience" id="experience" data-nav="experience">
+        <div class="section-head">
+          <p class="eyebrow"><span class="dot"></span> The Experience</p>
+          <h2 class="display" data-split-lines>More than a cup. <em>A coronation.</em></h2>
+          <p class="lead" data-reveal>From the cloud-wrapped estates to the warmth of your hands, discover the small rituals that make every Tea Majesty cup unforgettable.</p>
+        </div>
+        <div class="experience__stage">
+          <article class="note note--tl" data-note>
+            <span class="note__index">Sensory note 01</span>
+            <h3>Earthen Clay Embrace</h3>
+            <span class="note__tag">Matir Bhar · Kulhad</span>
+            <p>Unglazed, sun-baked clay breathes with the brew, lending a soft mineral whisper — like the first rain on warm soil.</p>
+          </article>
+          <article class="note note--tr" data-note>
+            <span class="note__index">Sensory note 02</span>
+            <h3>The Slow Simmer</h3>
+            <span class="note__tag">Patient spiced milk</span>
+            <p>A rolling boil, never rushed — cardamom crushed by hand, fresh ginger, and malty leaves folded into creamy milk.</p>
+          </article>
+          <article class="note note--bl" data-note>
+            <span class="note__index">Sensory note 03</span>
+            <h3>First Flush Shoots</h3>
+            <span class="note__tag">High-altitude tips</span>
+            <p>Only two tender leaves and a bud, plucked in the blue hour before sunrise to lock in honeyed, muscatel sweetness.</p>
+          </article>
+          <article class="note note--br" data-note>
+            <span class="note__index">Sensory note 04</span>
+            <h3>A Mindful Pause</h3>
+            <span class="note__tag">The ten-minute crown</span>
+            <p>Both hands around a warm cup. Steam on your face. A quiet throne in the middle of an ordinary day.</p>
+          </article>
+          <div class="experience__halo" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- ============ BOTANICAL SCIENCE ============ -->
+      <section class="science" id="science" data-nav="science">
+        <div class="science__pin">
+          <div class="science__head">
+            <p class="eyebrow"><span class="dot"></span> Philosophy &amp; Botanical Science</p>
+            <h2 class="display">Why the crown<br /><em>chooses Tea Majesty.</em></h2>
+          </div>
+          <div class="science__grid">
+            <div class="science__visual">
+              <svg class="sprig" viewBox="0 0 400 420" aria-hidden="true">
+                <defs>
+                  <linearGradient id="leafG" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#9ed36a" />
+                    <stop offset=".55" stop-color="#3f9b4a" />
+                    <stop offset="1" stop-color="#16552c" />
+                  </linearGradient>
+                  <radialGradient id="glowG"><stop offset="0" stop-color="#e8c66a" stop-opacity=".45" /><stop offset="1" stop-color="#e8c66a" stop-opacity="0" /></radialGradient>
+                </defs>
+                <circle cx="200" cy="210" r="190" fill="url(#glowG)" class="sprig__glow" />
+                <circle cx="200" cy="210" r="150" class="sprig__orbit" />
+                <circle cx="200" cy="210" r="182" class="sprig__orbit sprig__orbit--2" />
+                <path class="sprig__stem" d="M200 400 C196 330 204 260 198 200 C194 150 202 110 200 60" />
+                <g class="sprig__leaves">
+                  <path class="sprig__leaf" d="M199 300 C150 300 95 270 70 215 C130 205 180 240 199 300Z" />
+                  <path class="sprig__leaf" d="M201 270 C250 268 300 235 330 180 C268 172 220 210 201 270Z" />
+                  <path class="sprig__leaf" d="M198 210 C150 200 112 160 100 112 C158 116 192 160 198 210Z" />
+                  <path class="sprig__leaf" d="M201 175 C245 165 282 128 292 82 C238 88 205 130 201 175Z" />
+                  <path class="sprig__leaf" d="M200 62 C182 40 186 14 200 0 C214 14 218 40 200 62Z" />
+                </g>
+                <g class="sprig__veins">
+                  <path d="M199 300 C160 280 115 255 70 215" /><path d="M201 270 C245 250 290 215 330 180" />
+                  <path d="M198 210 C170 190 125 150 100 112" /><path d="M201 175 C235 150 270 115 292 82" />
+                  <path d="M200 62 V2" />
+                </g>
+                <g class="sprig__dew"><circle cx="135" cy="248" r="4" /><circle cx="268" cy="214" r="3" /><circle cx="150" cy="160" r="3.5" /><circle cx="252" cy="122" r="3" /></g>
+              </svg>
+              <ul class="benefits" aria-label="Benefits">
+                <li class="benefit" style="--x:2%;--y:12%" data-group="0"><span class="benefit__icon"><svg><use href="#i-bolt" /></svg></span><b>Steady Energy</b><small>No jitters, no crash</small></li>
+                <li class="benefit" style="--x:68%;--y:6%" data-group="0 1"><span class="benefit__icon"><svg><use href="#i-sparkle" /></svg></span><b>Antioxidant Rich</b><small>Catechins &amp; theaflavins</small></li>
+                <li class="benefit" style="--x:-2%;--y:46%" data-group="0 2"><span class="benefit__icon"><svg><use href="#i-brain" /></svg></span><b>Calm Focus</b><small>L-theanine clarity</small></li>
+                <li class="benefit" style="--x:72%;--y:44%" data-group="1"><span class="benefit__icon"><svg><use href="#i-heart" /></svg></span><b>Heart Harmony</b><small>Flavonoid support</small></li>
+                <li class="benefit" style="--x:4%;--y:80%" data-group="1 2"><span class="benefit__icon"><svg><use href="#i-gut" /></svg></span><b>Gentle Digestion</b><small>Ginger &amp; cardamom</small></li>
+                <li class="benefit" style="--x:66%;--y:82%" data-group="2"><span class="benefit__icon"><svg><use href="#i-shield" /></svg></span><b>Daily Resilience</b><small>Spice-led immunity</small></li>
+              </ul>
+            </div>
+            <div class="science__slides">
+              <div class="science__counter"><span class="science__current">01</span> / 03</div>
+              <article class="slide is-active">
+                <h3>Sustained Highland Vitality &amp; Focus</h3>
+                <p class="quote">&ldquo;Hours of calm, clean energy — never the coffee crash.&rdquo;</p>
+                <p>Leaves grown slowly in thin, cool mountain air build more L-theanine. Paired with natural caffeine, it releases energy gently, keeping your mind clear and your morning steady.</p>
+              </article>
+              <article class="slide">
+                <h3>Heart &amp; Digestive Harmony</h3>
+                <p class="quote">&ldquo;Warmth that travels — from the cup to the core.&rdquo;</p>
+                <p>Tea polyphenols are linked to healthy circulation, while our hand-crushed cardamom and sun-dried ginger have been trusted for generations to soothe and settle after every meal.</p>
+              </article>
+              <article class="slide">
+                <h3>Everyday Resilience, Royally Brewed</h3>
+                <p class="quote">&ldquo;A small daily ritual, a quietly stronger you.&rdquo;</p>
+                <p>Antioxidant-rich leaves meet warming spices traditionally used to support the body&rsquo;s defenses — so the healthiest habit of your day is also the most delicious one.</p>
+              </article>
+              <div class="science__bar"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OUR CRAFT (horizontal) ============ -->
+      <section class="craft" id="craft" data-nav="craft">
+        <div class="craft__pin">
+          <div class="craft__intro">
+            <p class="eyebrow"><span class="dot"></span> Our Craft</p>
+            <h2 class="display">From misted slope<br /><em>to royal cup.</em></h2>
+            <p class="lead">Four unhurried acts, perfected over generations. Scroll the journey.</p>
+          </div>
+          <div class="craft__track">
+            <article class="step">
+              <span class="step__num">I</span>
+              <div class="step__art step__art--pluck" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3>Pluck at Dawn</h3>
+              <p>Skilled hands select just two leaves and a bud while dew still clings, before the sun steals their sweetness.</p>
+              <span class="step__meta">05:30 AM · 1,450 m</span>
+            </article>
+            <article class="step">
+              <span class="step__num">II</span>
+              <div class="step__art step__art--wither" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <h3>Wither in Mountain Air</h3>
+              <p>Leaves rest on breezy racks for up to 18 hours, softening and concentrating their aromatic oils.</p>
+              <span class="step__meta">18 hrs · Natural airflow</span>
+            </article>
+            <article class="step">
+              <span class="step__num">III</span>
+              <div class="step__art step__art--roll" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3>Roll &amp; Oxidise</h3>
+              <p>Gently rolled to release their juices, then oxidised to a burnished copper, where malt and honey notes are born.</p>
+              <span class="step__meta">Copper hue · Malty depth</span>
+            </article>
+            <article class="step">
+              <span class="step__num">IV</span>
+              <div class="step__art step__art--brew" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3>Seal the Crown</h3>
+              <p>Fired, graded and sealed within days of plucking in aroma-lock pouches — estate freshness, straight to your kettle.</p>
+              <span class="step__meta">Sealed in 72 hrs</span>
+            </article>
+            <article class="step step--end">
+              <p class="step__big">Fresh from estate<br /><em>to your cup.</em></p>
+              <a href="#blends" class="btn btn--gold" data-magnetic>Choose your blend <svg><use href="#i-arrow" /></svg></a>
+            </article>
+          </div>
+          <div class="craft__progress"><span></span></div>
+        </div>
+      </section>
+
+      <!-- ============ BLENDS ============ -->
+      <section class="blends" id="blends" data-nav="blends">
+        <div class="blends__glow" aria-hidden="true"></div>
+        <div class="blends__head">
+          <div>
+            <p class="eyebrow"><span class="dot"></span> The Royal Collection</p>
+            <h2 class="display">A blend for <em class="gold">every mood.</em></h2>
+          </div>
+          <p class="blends__aside">&ldquo;From the boldness of Kadak to the soft perfume of Elaichi — five blends, each worthy of a throne.&rdquo;</p>
+        </div>
+        <div class="blends__body">
+          <div class="blends__tabs" role="tablist" aria-label="Blends"></div>
+          <div class="blends__stage">
+            <div class="pouch-wrap" data-cursor="Drag">
+              <div class="pouch" id="pouch">
+                <div class="pouch__face">
+                  <div class="pouch__seal"></div>
+                  <div class="pouch__crest"><svg><use href="#i-crown" /></svg></div>
+                  <p class="pouch__brand">TEA MAJESTY</p>
+                  <p class="pouch__est">Highland Estate</p>
+                  <p class="pouch__name"></p>
+                  <p class="pouch__sub"></p>
+                  <div class="pouch__art"><span class="pouch__cup"></span><span class="pouch__leaf pouch__leaf--a"></span><span class="pouch__leaf pouch__leaf--b"></span></div>
+                  <p class="pouch__weight">500 g</p>
+                  <div class="pouch__shine"></div>
+                </div>
+              </div>
+              <div class="pouch-shadow"></div>
+            </div>
+          </div>
+          <div class="blends__info" aria-live="polite">
+            <span class="chip blend__tag"></span>
+            <h3 class="blend__name"></h3>
+            <p class="blend__desc"></p>
+            <p class="blend__note"><svg><use href="#i-leaf" /></svg><span></span></p>
+            <div class="blend__notes"></div>
+            <div class="blend__row">
+              <div class="packs" role="radiogroup" aria-label="Pack size">
+                <span class="packs__label">Pack</span>
+                <button class="pack" data-pack="250" role="radio">250g</button>
+                <button class="pack is-active" data-pack="500" role="radio">500g</button>
+                <button class="pack" data-pack="1000" role="radio">1kg</button>
+              </div>
+              <p class="price"><span class="price__cur">৳</span><span class="price__val">0</span><small>/ <span class="price__unit">500g</span></small></p>
+            </div>
+            <div class="blend__row blend__row--foot">
+              <p class="assure"><svg><use href="#i-check" /></svg>Estate fresh <svg><use href="#i-check" /></svg>Free delivery over ৳1500</p>
+              <button class="btn btn--gold" data-order-blend data-magnetic>Order this blend <svg><use href="#i-arrow" /></svg></button>
+            </div>
+            <div class="blends__pager">
+              <button class="round" data-prev aria-label="Previous blend"><svg style="transform:scaleX(-1)"><use href="#i-chev" /></svg></button>
+              <span class="blends__count">1 / 5</span>
+              <button class="round" data-next aria-label="Next blend"><svg><use href="#i-chev" /></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TESTIMONIAL MARQUEE ============ -->
+      <section class="voices" aria-label="Our promise">
+        <div class="marquee">
+          <div class="marquee__track">
+            <p>Hand-plucked at dawn <span>✦</span></p>
+            <p>Two leaves &amp; a bud <span>✦</span></p>
+            <p>Slow-withered in mountain air <span>✦</span></p>
+            <p>Sealed within 72 hours <span>✦</span></p>
+            <p>Real cardamom, real ginger <span>✦</span></p>
+            <p>Brewed for royalty, priced for every home <span>✦</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FINAL CTA ============ -->
+      <section class="finale" id="finale">
+        <div class="finale__ring" aria-hidden="true"></div>
+        <p class="eyebrow"><span class="dot"></span> The last sip</p>
+        <h2 class="finale__title" data-split-lines>Every sip <em>wears a crown.</em></h2>
+        <p class="finale__quote" data-reveal>&ldquo;Make every tea moment a Tea Majesty moment.&rdquo;</p>
+        <div class="finale__actions" data-reveal>
+          <button class="btn btn--gold btn--lg" data-order data-magnetic>Order Royal Reserve <svg><use href="#i-arrow" /></svg></button>
+          <button class="btn btn--text" id="replay"><svg><use href="#i-replay" /></svg> Replay the cinematic</button>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="footer">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <p class="footer__logo"><svg><use href="#i-crown" /></svg> Tea Majesty</p>
+            <p>Rooted in the timeless heritage of highland tea gardens. Celebrating the purity of tender leaves and the warmth of the earthen cup.</p>
+            <form class="newsletter" id="newsletter">
+              <input type="email" placeholder="Your email for estate letters" aria-label="Email" required />
+              <button class="round round--gold" aria-label="Subscribe"><svg><use href="#i-arrow" /></svg></button>
+            </form>
+          </div>
+          <div>
+            <p class="footer__h">Navigate</p>
+            <a href="#home">Home</a><a href="#experience">Experience</a><a href="#science">Why Tea Majesty</a><a href="#craft">Our Craft</a><a href="#blends">Blends</a>
+          </div>
+          <div>
+            <p class="footer__h">Connect</p>
+            <div class="socials">
+              <a href="#" aria-label="Instagram"><svg><use href="#i-insta" /></svg></a>
+              <a href="#" aria-label="Facebook"><svg><use href="#i-fb" /></svg></a>
+              <a href="#" aria-label="YouTube"><svg><use href="#i-yt" /></svg></a>
+              <a href="#" aria-label="Email"><svg><use href="#i-mail" /></svg></a>
+            </div>
+            <p class="footer__small">Crafted with devotion to the art of the royal cup.</p>
+          </div>
+        </div>
+        <p class="footer__giant" aria-hidden="true">Tea Majesty</p>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> Tea Majesty. All rights reserved.</span>
+          <span><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Sourcing</a></span>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ============ ORDER MODAL ============ -->
+    <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle" aria-hidden="true">
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__card">
+        <button class="modal__close round" data-close aria-label="Close"><svg><use href="#i-close" /></svg></button>
+        <div class="modal__crest"><svg><use href="#i-crown" /></svg></div>
+        <h2 id="orderTitle">Tea Majesty</h2>
+        <p class="modal__sub">Direct estate harvest · Fresh to cup</p>
+        <div class="seg" role="tablist">
+          <span class="seg__pill"></span>
+          <button class="seg__btn is-active" data-mode="personal" role="tab"><svg><use href="#i-user" /></svg>Personal</button>
+          <button class="seg__btn" data-mode="wholesale" role="tab"><svg><use href="#i-store" /></svg>Wholesale</button>
+        </div>
+        <form class="form" id="orderForm" novalidate>
+          <label class="field"><span><svg><use href="#i-leaf" /></svg>Tea blend</span><select name="blend" id="fBlend"></select></label>
+          <label class="field"><span><svg><use href="#i-box" /></svg><span class="lbl-pack">Pack size</span></span><select name="pack" id="fPack"></select></label>
+          <label class="field field--biz"><span><svg><use href="#i-store" /></svg>Business name *</span><input name="business" placeholder="e.g. Golden Leaf Café" /></label>
+          <label class="field"><span><svg><use href="#i-user" /></svg>Your name *</span><input name="name" placeholder="e.g. Rahim Ahmed" required /></label>
+          <label class="field"><span><svg><use href="#i-phone" /></svg>Phone / WhatsApp *</span><input name="phone" type="tel" placeholder="+880 1XXX-XXXXXX" required /></label>
+          <label class="field"><span><svg><use href="#i-pin" /></svg>Delivery city *</span><input name="city" placeholder="e.g. Dhaka 1207" required /></label>
+          <label class="field"><span><svg><use href="#i-note" /></svg>Special note (optional)</span><input name="note" placeholder="Gift wrap, delivery time…" /></label>
+          <div class="form__total"><span>Estimated total</span><strong id="fTotal">৳0</strong></div>
+          <div class="form__actions">
+            <button type="submit" class="btn btn--gold btn--block"><span class="submit-label">Submit personal order</span><svg><use href="#i-send" /></svg></button>
+            <button type="button" class="btn btn--wa" id="waBtn"><svg><use href="#i-chat" /></svg>WhatsApp</button>
+          </div>
+        </form>
+        <div class="modal__success" aria-live="polite">
+          <div class="success__badge"><svg><use href="#i-check" /></svg></div>
+          <h3>Your order is brewing!</h3>
+          <p>Thank you, <span class="success__name"></span>. Our estate team will call you within 24 hours to confirm.</p>
+          <button class="btn btn--ghost" data-close>Back to the estate</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
